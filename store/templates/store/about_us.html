@@ -1,0 +1,136 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+<hr>
+<h2 class="text-center">About Us</h2>
+<hr>
+<div class="text-center">
+<p><img src="{% static 'images/capture1.png' %}" alt=" " /></a></p>
+</div>
+
+<hr>
+<h2 class="text-center">Our Team</h2>
+<hr>
+<div class="row">
+  {% for contact in contacts %}
+   <div class="col-lg-4">
+      <img class="thumbnail" src="{{contact.agent_image.url}}">
+      <div class="box-element product">
+          <h6><strong>{{contact.agent_name}}</strong></h6>
+          <hr>
+          <h4 style="display: inline-block; font-size: 18px;">{{contact.agent_position}}</h4>
+          <hr>
+          <h6>{{contact.agent_contact}}</h6>
+
+      </div>
+   </div>
+  {% endfor %}
+</div>
+
+<hr>
+<h2 class="text-center">More About Usakag Fashions</h2>
+<hr>
+
+<button class="accordion">What is Usakag Fashions?</button>
+<div class="panel">
+  <p>Usakag fashions is a private registered company dealing in variety of products including Bags, men wears, women wears, scarves and veils.<br>
+    We also do some IT works involving website development and designing, computer hardware repair and maintainance, networking and others. 
+ </p>
+</div>
+
+<button class="accordion"> What are services delivered by Usakag Fashions?</button>
+<div class="panel">
+  <p>We offer door to door deliveries of products directly to our customers.<br>
+    We also offer customer care services involving directing customers to our sale points and giving discount to customers who come directly  to our shops.</p>
+</div>
+
+<button class="accordion">How Can You Access Usakag products?</button>
+<div class="panel">
+  <p>You may contact us through our website <a href="{% url 'store' %}">@Usakag Fashions</a>, or call our managing director Mr.Kagolo Usama on 0704544125,
+    or come directly to Usafi market stall No.D029-D031, or come to our shops at William street @lockup besides Trade link No.504.</p>
+</div>
+
+<button class="accordion">How Can You Access Usakag Fashions Products?</button>
+<div class="panel">
+  <p>You may contact us through our website <a href="{% url 'store' %}">@Usakag Fashions</a>, or call our managing director Mr.Kagolo Usama on 0704544125,or come directly to Usafi market stall No.D029-D031, or come to our shops at William street @lockup besides Trade link No.504.</p>
+</div>
+
+<button class="accordion">How Can You Make An Order (send an invoice) For Usakag Fashions Products?</button>
+<div class="panel">
+  <p>Just simply, visit our site <a href="{% url 'store' %}">@Usakag Fashions</a> start adding items into the cart, 
+    then after selecting the appropriate items into the cart, click on the cart image at the navigation bar above, verify the items selected and their total cost then click on checkout, fill the form fields, click on continue button and then click on sendorder button.
+    <br><b>NB:</b> You can first make payments for the items ordered before they are are delivered to you.</p>
+</div>
+
+<button class="accordion">How Can You Make Payments To Usakag Fashions?</button>
+<div class="panel">
+  <p>Our customers make payments via Mobile Money through our lines 0704544125, or 0782411217 both in name of our Director Kagolo Usama. 
+    <br><b>NB:</b>- Please ensure that you call after making any payments/deposit on those numbers.
+              <br>- Once payments are made, no refund will be allowed (payments are non refundable).</p>
+</div>
+
+<button class="accordion">What Happens Incase The Items Ordered Fail To Meet The User Requirements?</button>
+<div class="panel">
+  <p>Our sales agent can exchange that item into another else the client can come directly to our shops to claim for an exchange.
+    <br><b>NB:</b>- Exchange of any item will be allowed just once.
+    <br> - Customers will be allowed to make additional payments incase an item required (current item) is relatively expensive compared to the previous one.</p>
+</div>
+
+<button class="accordion">How Can You Recieve Ordered Items/Products</button>
+<div class="panel">
+  <p>After making an order for items/products at Usakag Fashions, call us on 0704544125 /0709581747 /0701434706. <br>Remember to keep track on our agent by callling and directing him/her where to find you.
+    <br>Stay in clear and open space to enable our agent to quikly locate you.
+    <br>If you didn't make prior payments, then pay cash on delivery. </p>
+</div>
+
+<button class="accordion">How can you become Usakag Fashions sales agent ?</button>
+<div class="panel">
+  If you want to become our sales agent, you can contact our managing director Mr.Kagolo Usama on 0704544125, director human resource Kayongo Shafik on 0701434706.</p>
+</div>
+<br>
+<!-- footer -->
+<div class="grid-container">
+  <div class="footer">
+    <h4><a class="navbar-brand" href="{% url 'store' %}"><img id="logo-icon" src="{% static 'images/capture1.png' %}" alt=" " />Usakag Fashions</a></h4>
+      <p>William Street,@Lockups Besides Trade Link shop No.504</p>
+      <p>Kampala City</p>
+      <p>Email: usamakagolo@gmail.com</p>
+      <p>Telephone: 0704544125</p>
+   <div class="text-centre">
+    <h4><b>Information</b></h4>
+      <p><a href="{% url 'about_us' %}">About Us</a></p>
+      <p><a href="{% url 'special_offers' %}">Special Offers</a></p>
+      <p><a href="{% url 'faq' %}">faq</a></p>
+      <p><a href="{% url 'store' %}">Register</a></p>
+      <p><a href="{% url 'store' %}">Login</a></p>
+      <p><a href="{% url 'store' %}">Logout</a></p>
+    </div>
+      
+  </div>
+
+ </div>
+<div class="clearfix"></div>
+<p class="copy-right">© 2022 usakag fashions . All rights reserved | Design by <a href="#"> Usak.designs.</a></p>
+
+<!-- //footer -->
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+
+
+{% endblock content %}

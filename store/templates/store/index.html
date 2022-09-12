@@ -1,0 +1,115 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+{% block content %}
+
+<div class="container mt-3">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    
+      <!-- Indicators -->
+      <ul class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ul>
+      
+      <!-- The slideshow -->
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+            <a href="{% url 'men' %}"><img src="{% static 'images/shirts.jpg' %}" width="auto" height="400px">
+                <div class="text" style=font-size:30px;>SK Fashions Men;<br><br></div></a>
+        </div>
+        
+        {% for carousel in carousels %}
+        <div class="carousel-item">
+            <a href="#"><img src="{{carousel.carousel_image}}" width="auto" height="400px">
+                <div class="text" style=font-size:30px;>{{carousel.image_name}};<br><br></div></a>
+        </div>
+        {% endfor %}
+      </div>
+      
+      <!-- Left and right controls -->
+      <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </a>
+      <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </a>
+    </div>
+    
+    </div>
+    <hr>
+    <h2 class="text-center">Our Products</h2>
+    <div class="container">
+      {%if  user_product_filter  %}
+      <form method="get">	
+      {% for field in  user_product_filter.form.visible_fields %}
+        <div class="form-group">
+          {% render_field user_product_filter.form.name class="form-control" placeholder="Enter Product Name" %}
+          {% for error in field.errors %}
+          <span class="help-block">{{ error }}</span>
+          {% endfor %}
+        </div>
+      {% endfor %}
+    <div class="form-group">
+      <button type="submit" class="btn btn-success">
+        <span class="glyphicon glyphicon-ok"></span> Search
+      </button>
+      
+      </div>
+     </form>
+
+    <div class="row">
+        {% for product in user_product_filter.qs %}
+        <div class="col-lg-4">
+            <img class="thumbnail" src="{{product.imageURL}}">
+            <div class="box-element product">
+                <h6><strong>{{product.name}}</strong></h6>
+                <h>
+                <hr>
+                <button data-product={{product.id}} data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to cart</button>
+                <a  class="btn btn-outline-success" href="{% url 'single_product' product.id %}">View</a>
+                <h4 style="display: inline-block; float: right; font-size: 18px;"><strong>UGX{{product.price}}</strong></h4>
+
+
+            </div>
+        </div>
+        {% endfor %}
+
+        {%else%}
+            <div class="card-body">
+                <h4>No Data available</h4>
+            </div>
+        {%endif%}
+
+     </div>
+     <br>
+
+     <div class="grid-container">
+      <div class="footer">
+        <h4><a class="navbar-brand" href="{% url 'store' %}"><img id="logo-icon" src="{% static 'images/capture1.png' %}" alt=" " />Usakag Fashions</a></h4>
+          <p>William Street,@Lockups Besides Trade Link shop No.504</p>
+          <p>Kampala City</p>
+          <p>Email: usamakagolo@gmail.com</p>
+          <p>Telephone: 0704544125</p>
+       <div>
+        <h4><b>Information</b></h4>
+          <p><a href="{% url 'about_us' %}">About Us</a></p>
+          <p><a href="{% url 'special_offers' %}">Special Offers</a></p>
+          <p><a href="{% url 'faq' %}">faq</a></p>
+          <p><a href="{% url 'store' %}">Register</a></p>
+          <p><a href="{% url 'store' %}">Login</a></p>
+          <p><a href="{% url 'store' %}">Logout</a></p>
+        </div>
+          
+      </div>
+ 
+     </div>
+ <div class="clearfix"></div>
+<p class="copy-right">© 2022 usakag fashions . All rights reserved | Design by <a href="#"> Usak.designs.</a></p>
+
+     
+{% endblock content %}
+
+

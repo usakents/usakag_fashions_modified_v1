@@ -1,0 +1,90 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+<div class="row">
+	<div class="col-lg-6">
+		<div class="box-element" id="form-wrapper">
+               <form>
+
+                    <div>
+                         <a  class="btn btn-outline-dark" href="{% url 'store' %}">&#x2190; Back to Home Page</a>
+                         <hr>
+                         <h3><strong>{{prod.name}}</strong></h3> 
+					<hr>
+                    </div>
+
+                    <div>
+                        <img class="thumbnail" src="{{prod.image.url}}" alt=""/>
+                    </div>
+
+                    <hr>
+                    <button data-product={{prod.id}} data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to cart</button>
+               </form>     
+		</div>
+		
+	</div>
+
+	<div class="col-lg-6">
+		<div class="box-element">
+	          <h3><strong>Item Details</strong></h3>
+	          <hr>
+
+			<div class="cart-row">
+		         <p><b>Item Name: {{prod.name}}</b></p>
+	          </div>
+
+              <div class="cart-row">
+                <p><b>Item Price: UGX{{prod.price}}</b></p>
+              </div>
+
+              <div class="cart-row">
+               <p><b>Item Size: {{prod.size}}</b></p>
+             </div>
+
+             <div class="cart-row">
+              <p><b>Status: {{prod.item_status}}</b></p>
+            </div>
+             <a  class="btn btn-outline-dark" href="{% url 'special_offers' %}"> See Special Offers &#x2192;</a>
+	        <hr> 
+             <h3><strong>Delivery Information</strong></h3>
+	         <hr>
+              <P> - Free deliveries for customers within Kampala and nearby areas of 2km radius.</P>
+		    <p> - For customers whose orders exceed 2km off Kampala are advised to pay transport costs for the items 
+                    delivered depending on the distance covered.</p>
+              <p> - Customers who have not made prior payments before delivery are expected to pay cash on delivery.</p> 
+              <p> - Free delivery orders must consist of atleast 2 items</p>
+              <p> - For orders with only 1 item (single item), transport costs must be paid by the customer</p> 
+		</div>
+	</div>
+</div>
+<br>
+
+<!-- footer -->
+<div class="grid-container">
+     <div class="footer">
+       <h4><a class="navbar-brand" href="{% url 'store' %}"><img id="logo-icon" src="{% static 'images/capture1.png' %}" alt=" " />Usakag Fashions</a></h4>
+         <p>William Street,@Lockups Besides Trade Link shop No.504</p>
+         <p>Kampala City</p>
+         <p>Email: usamakagolo@gmail.com</p>
+         <p>Telephone: 0704544125</p>
+      <div class="text-centre">
+       <h4><b>Information</b></h4>
+         <p><a href="{% url 'about_us' %}">About Us</a></p>
+         <p><a href="{% url 'special_offers' %}">Special Offers</a></p>
+         <p><a href="{% url 'faq' %}">faq</a></p>
+         <p><a href="{% url 'store' %}">Register</a></p>
+         <p><a href="{% url 'store' %}">Login</a></p>
+         <p><a href="{% url 'store' %}">Logout</a></p>
+       </div>
+         
+     </div>
+   
+    </div>
+   <div class="clearfix"></div>
+   <p class="copy-right">© 2022 usakag fashions . All rights reserved | Design by <a href="#"> Usak.designs.</a></p>
+   
+   <!-- //footer -->
+
+
+{% endblock content %}

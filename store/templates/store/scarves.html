@@ -1,0 +1,54 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+<hr>
+<h2 class="text-center">Scarves</h2>
+<hr>
+     <div class="row">
+        {% for scarf in scarves %}
+        <div class="col-lg-4">
+            <img class="thumbnail" src="{{scarf.imageURL}}">
+            <div class="box-element product">
+                <h6><strong>{{scarf.name}}</strong></h6>
+                <hr>
+                <button data-product={{scarf.id}} data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to cart</button>
+                <a  class="btn btn-outline-success" href="{% url 'single_product' scarf.id %}">View</a>
+                <h4 style="display: inline-block; float: right; font-size: 18px;"><strong>UGX{{scarf.price}}</strong></h4>
+
+
+            </div>
+        </div>
+        {% endfor %}
+
+     </div>
+     <br>
+
+     <!-- footer -->
+<div class="grid-container">
+    <div class="footer">
+      <h4><a class="navbar-brand" href="{% url 'store' %}"><img id="logo-icon" src="{% static 'images/capture1.png' %}" alt=" " />Usakag Fashions</a></h4>
+        <p>William Street,@Lockups Besides Trade Link shop No.504</p>
+        <p>Kampala City</p>
+        <p>Email: usamakagolo@gmail.com</p>
+        <p>Telephone: 0704544125</p>
+     <div class="text-centre">
+      <h4><b>Information</b></h4>
+        <p><a href="{% url 'about_us' %}">About Us</a></p>
+        <p><a href="{% url 'special_offers' %}">Special Offers</a></p>
+        <p><a href="{% url 'faq' %}">faq</a></p>
+        <p><a href="{% url 'store' %}">Register</a></p>
+        <p><a href="{% url 'store' %}">Login</a></p>
+        <p><a href="{% url 'store' %}">Logout</a></p>
+      </div>
+        
+    </div>
+  
+   </div>
+  <div class="clearfix"></div>
+  <p class="copy-right">© 2022 usakag fashions . All rights reserved | Design by <a href="#"> Usak.designs.</a></p>
+  
+  <!-- //footer -->
+
+{% endblock content %}
+
